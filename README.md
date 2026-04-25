@@ -1,41 +1,49 @@
-# SOLE — E-commerce de Sneakers
+# SOLE — Sneaker Store
 
-Loja virtual de tênis com experiência de compra moderna, animações fluidas e carrinho interativo.
+> Uma loja de tênis com identidade visual forte, animações fluidas e experiência de compra pensada em cada detalhe.
+
+---
+
+## Visão Geral
+
+SOLE é um e-commerce de sneakers construído com foco em experiência do usuário. Do cursor customizado ao carrinho animado, cada interação foi projetada para transmitir modernidade e estilo.
+
+---
 
 ## Tecnologias
 
-- **React 19** — componentização e gerenciamento de estado com hooks (`useState`, `useEffect`, `useContext`)
-- **Vite** — bundler e servidor de desenvolvimento
-- **Framer Motion** — animações de entrada, scroll progress bar, transições de modal e carrinho
-- **Lucide React** — ícones
-- **CSS Modules** — estilização escopada por componente
-- **Context API** — gerenciamento global do carrinho via `CartContext`
+| Tecnologia | Uso |
+|---|---|
+| **React 19** | Componentização, hooks e gerenciamento de estado |
+| **Vite** | Build ultrarrápido e servidor de desenvolvimento |
+| **Framer Motion** | Animações de entrada, transições e scroll progress |
+| **Lucide React** | Ícones leves e consistentes |
+| **CSS Modules** | Estilização escopada por componente |
+| **Context API** | Estado global do carrinho |
+
+---
 
 ## Funcionalidades
 
-- Catálogo de produtos com busca em tempo real
-- Modal de produto com galeria de imagens, seleção de cor e tamanho
-- Carrinho lateral com adição, remoção e cálculo de total
-- Tema dark/light persistido no `localStorage`
-- Cursor customizado
-- Marquee animado
-- Banner de destaque com produto em evidência
-- Barra de progresso de scroll
+- Catálogo de produtos com **busca em tempo real**
+- **Modal de produto** com galeria, seleção de cor e tamanho
+- **Carrinho lateral** animado com cálculo de total
+- Tema **dark / light** persistido no navegador
+- **Cursor customizado** para identidade visual única
+- **Barra de progresso** de scroll sincronizada com a página
+- Banner de destaque e marquee animado
+
+---
 
 ## Estrutura
 
 ```
 src/
-├── components/      # Navbar, Hero, ProductCard, ProductGrid, ProductModal, Cart, Footer, Cursor, Marquee, FeaturedBanner
-├── context/         # CartContext
-├── data/            # products.js
+├── components/   Navbar, Hero, ProductCard, ProductGrid,
+│                 ProductModal, Cart, Footer, Cursor,
+│                 Marquee, FeaturedBanner
+├── context/      CartContext
+├── data/         products.js
 ├── App.jsx
 └── index.css
-```
-
-## Como rodar
-
-```bash
-npm install
-npm run dev
 ```
