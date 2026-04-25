@@ -1,0 +1,87 @@
+.section {
+  padding: 80px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+.card:hover { transform: scale(1.01); }
+
+.card:not(.cardSm) {
+  min-height: 560px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cardSm { min-height: 265px; }
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+}
+
+.cardContent {
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  z-index: 1;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+  border: 1px solid var(--accent);
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+
+.cardContent h3 {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.link {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  padding-bottom: 2px;
+  transition: border-color 0.2s;
+}
+.link:hover { border-color: var(--accent); color: var(--accent); }
+
+@media (max-width: 768px) {
+  .section { padding: 40px 20px; }
+  .container { grid-template-columns: 1fr; }
+  .card:not(.cardSm) { min-height: 400px; }
+}
