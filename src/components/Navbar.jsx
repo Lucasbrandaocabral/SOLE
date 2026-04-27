@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ShoppingBag, Search, Menu, X, Sun, Moon } from 'lucide-react'
 import { useCart } from '../context/CartContext'
 import styles from './Navbar.module.css'
+import logo from '../assets/logotipo.png'
 
 export default function Navbar({ onSearch, theme, toggleTheme }) {
   const { count, setIsOpen } = useCart()
@@ -30,7 +31,9 @@ export default function Navbar({ onSearch, theme, toggleTheme }) {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className={styles.inner}>
-        <a href="#" className={styles.logo}>SOLE<span>.</span></a>
+        <a href="#" className={styles.logo}>
+          <img src={logo} alt="SOLE" className={styles.logoImg} />
+        </a>
 
         <ul className={styles.links}>
           {['Novidades', 'Coleções', 'Brands', 'Sale'].map(l => (
