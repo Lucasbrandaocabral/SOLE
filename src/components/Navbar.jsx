@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ShoppingBag, Search, Menu, X, Sun, Moon } from 'lucide-react'
 import { useCart } from '../context/CartContext'
 import styles from './Navbar.module.css'
-import logo from '../assets/logotipo.png'
+import logoBranco from '../assets/logotipo branco.png'
+import logoPreto from '../assets/logotipo preto.png'
 
 export default function Navbar({ onSearch, theme, toggleTheme }) {
   const { count, setIsOpen } = useCart()
@@ -32,7 +33,7 @@ export default function Navbar({ onSearch, theme, toggleTheme }) {
     >
       <div className={styles.inner}>
         <a href="#" className={styles.logo}>
-          <img src={logo} alt="SOLE" className={styles.logoImg} />
+          <img src={theme === 'dark' ? logoBranco : logoPreto} alt="SOLE" className={styles.logoImg} />
         </a>
 
         <ul className={styles.links}>
