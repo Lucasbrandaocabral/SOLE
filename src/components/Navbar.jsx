@@ -3,8 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ShoppingBag, Search, Menu, X, Sun, Moon } from 'lucide-react'
 import { useCart } from '../context/CartContext'
 import styles from './Navbar.module.css'
-import logoBranco from '../assets/logotipo branco.png'
-import logoPreto from '../assets/logotipo preto.png'
 
 export default function Navbar({ onSearch, theme, toggleTheme }) {
   const { count, setIsOpen } = useCart()
@@ -19,6 +17,11 @@ export default function Navbar({ onSearch, theme, toggleTheme }) {
     return () => window.removeEventListener('scroll', fn)
   }, [])
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
+
   const handleSearch = (e) => {
     setSearchVal(e.target.value)
     onSearch(e.target.value)
@@ -32,9 +35,7 @@ export default function Navbar({ onSearch, theme, toggleTheme }) {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className={styles.inner}>
-        <a href="#" className={styles.logo}>
-          <img src={theme === 'dark' ? logoBranco : logoPreto} alt="SOLE" className={styles.logoImg} />
-        </a>
+        <a href="#" className={styles.logo}>SOLE<span>.</span></a>
 
         <ul className={styles.links}>
           {['Novidades', 'Coleções', 'Brands', 'Sale'].map(l => (
@@ -81,17 +82,29 @@ export default function Navbar({ onSearch, theme, toggleTheme }) {
 
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
-            className={styles.mobileMenu}
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-          >
-            {['Novidades', 'Coleções', 'Brands', 'Sale'].map(l => (
-              <a key={l} href="#products" onClick={() => setMenuOpen(false)}>{l}</a>
-            ))}
-          </motion.div>
+          <>
+            <motion.div
+              className={styles.overlay}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMenuOpen(false)}
+            />
+            <motion.div
+              className={styles.mobileMenu}
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 30, stiffness: 250 }}
+            >
+              <button className={styles.menuClose} onClick={() => setMenuOpen(false)}>
+                <X size={24} />
+              </button>
+              {['Novidades', 'Coleções', 'Brands', 'Sale'].map(l => (
+                <a key={l} href="#products" onClick={() => setMenuOpen(false)}>{l}</a>
+              ))}
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </motion.nav>
