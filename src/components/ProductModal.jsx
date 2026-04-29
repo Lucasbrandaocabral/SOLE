@@ -33,6 +33,8 @@ export default function ProductModal({ product, onClose }) {
     ? Math.round((1 - product.price / product.originalPrice) * 100)
     : null
 
+  const isMobile = window.innerWidth <= 720
+
   return (
     <motion.div
       className={styles.backdrop}
@@ -44,10 +46,12 @@ export default function ProductModal({ product, onClose }) {
     >
       <motion.div
         className={styles.modal}
-        initial={{ y: 36, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: 24, opacity: 0 }}
-        transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+        initial={isMobile ? { y: '100%' } : { y: 36, opacity: 0 }}
+        animate={isMobile ? { y: 0 } : { y: 0, opacity: 1 }}
+        exit={isMobile ? { y: '100%' } : { y: 24, opacity: 0 }}
+        transition={isMobile
+          ? { type: 'spring', damping: 30, stiffness: 250 }
+          : { duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
         onClick={e => e.stopPropagation()}
       >
         <button className={styles.close} onClick={onClose}><X size={20} /></button>

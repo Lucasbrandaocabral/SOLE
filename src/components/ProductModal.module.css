@@ -316,10 +316,51 @@
 }
 
 @media (max-width: 720px) {
+  .backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal {
+    border-radius: 20px 20px 0 0;
+    max-height: 92dvh;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .close {
+    top: 16px;
+    margin: 16px 16px -52px 0;
+  }
+
   .grid {
     grid-template-columns: 1fr;
-    padding: 20px;
+    padding: 16px 20px 40px;
+    padding-top: 8px;
+    gap: 20px;
   }
-  .details { padding: 0; }
-  .name { font-size: 28px; }
+
+  .details {
+    padding: 0;
+    gap: 16px;
+  }
+
+  .name { font-size: 26px; }
+  .price { font-size: 28px; }
+
+  .imgNav { display: none; }
+
+  .thumbs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .thumbs::-webkit-scrollbar { display: none; }
+  .thumb { flex-shrink: 0; width: 64px; }
+
+  .mainImg { aspect-ratio: 4/3; }
+
+  .perks { flex-direction: column; }
 }
